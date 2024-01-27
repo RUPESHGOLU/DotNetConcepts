@@ -7,12 +7,12 @@ List<String> inputList = ["success", "Rupesh"];
 Console.WriteLine("Using Dictionary");
 Console.WriteLine();
 
-foreach (string s in inputList)
+foreach (string inputString in inputList)
 {
     Dictionary<char, int> charCount = new Dictionary<char, int>();
-    Console.WriteLine(s);
+    Console.WriteLine(inputString);
 
-    foreach (char c in s)
+    foreach (char c in inputString)
     {
         if (charCount.ContainsKey(c))
             charCount[c]++;
