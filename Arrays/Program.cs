@@ -1,6 +1,7 @@
 ﻿//find out occurence of each letter and write count
 
 using System.Collections;
+using System.Text;
 
 List<String> inputList = ["success", "Rupesh"];
 
@@ -107,3 +108,35 @@ for (int i = 0; i < intArray.Length; i++)
         temp = intArray[i];
 }
 Console.WriteLine("Maximum number is: {0}", temp);
+
+//input: abcd , 
+//output: a ab abc abcd b bc bcd c cd d
+string inputNew = "abcd";
+int skip = 0;
+
+for (int i = 0; i < inputNew.Length; i++)
+{
+    int length = inputNew.Length - skip;
+    while (length > 0)
+    {
+        string subString = inputNew.Substring(i, length);
+        Console.WriteLine(subString);
+        length--;
+    }
+    Console.WriteLine();
+    skip++;
+}
+// reverse each word of a sentence
+string sentence = "this is a ball";//Output : siht si a llab
+string[] arrayWords = new string[10];
+arrayWords = sentence.Split(" ");
+StringBuilder stringBuilder = new StringBuilder();
+foreach (string word in arrayWords)
+{
+    for (int i = word.Length-1; i >=0; i--)
+    {
+         stringBuilder.Append(word[i]);
+    }
+    stringBuilder.Append(" ");
+}
+Console.WriteLine(stringBuilder.ToString());
