@@ -133,10 +133,79 @@ arrayWords = sentence.Split(" ");
 StringBuilder stringBuilder = new StringBuilder();
 foreach (string word in arrayWords)
 {
-    for (int i = word.Length-1; i >=0; i--)
+    for (int i = word.Length - 1; i >= 0; i--)
     {
-         stringBuilder.Append(word[i]);
+        stringBuilder.Append(word[i]);
     }
     stringBuilder.Append(" ");
 }
 Console.WriteLine(stringBuilder.ToString());
+Console.WriteLine();
+
+int[] intArrayToFindMaxConsecutiveNumbers = [3, 4, 1, 4, 4, 1, 2, 4, 4, 1, 1, 1, 1, 4, 1, 1, 1];
+
+var results = intArrayToFindMaxConsecutiveNumbers.GroupBy(s => s).
+ToDictionary(x => new { Letter = x.Key, Count = x.Count() }).Where(s => s.Key.Count > (intArrayToFindMaxConsecutiveNumbers.Length / 2)).ToList();
+foreach (var result in results)
+{
+    Console.WriteLine("integer {0} count is :{1}", result.Key.Letter, result.Key.Count);
+}
+
+//Integer array to find out the triplets whose sum value is 9 using c# 
+int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+int targetSum = 9;
+
+for (int i = 0; i < array.Length - 2; i++)
+{
+
+    for (int j = i + 1; j < array.Length - 1; j++)
+    {
+        for (int k = j + 1; k < array.Length; k++)
+        {
+            if ((array[i] + array[j] + array[k]) == targetSum)
+            {
+                Console.WriteLine("Triplet is " + array[i] + ", " + array[j] + ", " + array[k]);
+            }
+        }
+    }
+
+}
+//reverse a string
+string stringToReverse = "Ganesh";
+StringBuilder sb = new StringBuilder();
+for (int i = stringToReverse.Length - 1; i >= 0; i--)
+{
+    sb.Append(input[i]);
+
+}
+Console.WriteLine(sb.ToString());
+
+//Sum all digits of a number and do until it become single digit
+Console.WriteLine("Sum of all digits in a single digit");
+ArrayClass arrayClass = new ArrayClass();
+int sumofDigits = 8899996;
+do
+{
+    sumofDigits = arrayClass.SumofAllDigits(sumofDigits.ToString());
+    Console.WriteLine($"{sumofDigits}");
+}
+while (sumofDigits > 9);
+
+Console.ReadKey();
+public class ArrayClass
+{
+    public int SumofAllDigits(string number)
+    {
+        var charArray = number.ToCharArray();
+        int sum = 0;
+        for (int i = 0; i < charArray.Length; i++)
+        {
+            int digitValue = Convert.ToInt32( charArray[i].ToString());
+            sum += digitValue;
+        }
+        return sum;
+    }
+
+}
+
+
